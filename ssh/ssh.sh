@@ -227,6 +227,9 @@ clear
 print_install "Menginstall Fail2ban"
 # install fail2ban
 apt -y install fail2ban
+sudo systemctl enable --now fail2ban
+/etc/init.d/fail2ban restart
+/etc/init.d/fail2ban status
 
 # Instal DDOS Flate
 if [ -d '/usr/local/ddos' ]; then
