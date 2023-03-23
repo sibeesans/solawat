@@ -301,6 +301,21 @@ print_install "Restarting  All Packet"
 /etc/init.d/vnstat restart
 systemctl restart haproxy
 /etc/init.d/cron restart
+    systemctl daemon-reload
+    systemctl start netfilter-persistent
+    systemctl enable --now nginx
+    systemctl enable --now chronyd
+    systemctl enable --now xray
+    systemctl enable --now rc-local
+    systemctl enable --now dropbear
+    systemctl enable --now openvpn
+    systemctl enable --now cron
+    systemctl enable --now haproxy
+    systemctl enable --now netfilter-persistent
+    systemctl enable --now squid
+    systemctl enable --now ws-epro
+    systemctl enable --now client
+    systemctl enable --now fail2ban
 history -c
 echo "unset HISTFILE" >> /etc/profile
 
