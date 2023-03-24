@@ -6,9 +6,9 @@
 MYIP=$(wget -qO- ipinfo.io/ip);
 clear
 apt install jq curl -y >/dev/null 2>&1
-DOMAIN=gabutvpn.me
-sub=$(</dev/urandom tr -dc a-x1-9 | head -c6 | tr -d '\r' | tr -d '\r\n')
-SUB_DOMAIN=${sub}.gabutvpn.me
+DOMAIN=gabutvpn.tech
+sub=$(</dev/urandom tr -dc a-x1-9 | head -c5 | tr -d '\r' | tr -d '\r\n')
+SUB_DOMAIN=${sub}.gabutvpn.tech
 CF_ID=paoandest@gmail.com
 CF_KEY=1d158d0efc4eef787222cefff0b6d20981462
 set -euo pipefail
