@@ -251,17 +251,17 @@ print_success "Fail2ban"
 #INSTALL HAPROXY
 sudo apt-get remove haproxy -y && sudo apt-get remove --auto-remove haproxy -y && sudo apt-get purge haproxy -y && sudo apt-get purge --auto-remove haproxy -y
 
-apt update -y
-apt install sudo -y
-sudo apt-get clean all
-sudo apt-get autoremove -y
-apt install -y debconf-utils
-sudo apt-get remove --purge exim4 -y
-sudo apt-get remove --purge ufw firewalld -y
-apt install -y --no-install-recommends software-properties-common
-echo iptables-persistent iptables-persistent/autosave_v4 boolean true | debconf-set-selections
-echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-set-selections
-apt install -y speedtest-cli jq iptables iptables-persistent netfilter-persistent net-tools socat cron dropbear squid neofetch
+#apt update -y
+#apt install sudo -y
+#sudo apt-get clean all
+#sudo apt-get autoremove -y
+#apt install -y debconf-utils
+#sudo apt-get remove --purge exim4 -y
+#sudo apt-get remove --purge ufw firewalld -y
+#apt install -y --no-install-recommends software-properties-common
+#echo iptables-persistent iptables-persistent/autosave_v4 boolean true | debconf-set-selections
+#echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-set-selections
+#apt install -y speedtest-cli jq iptables iptables-persistent netfilter-persistent net-tools socat cron dropbear squid neofetch
 
 if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
     echo "Setup Dependencies $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')"
@@ -348,9 +348,7 @@ systemctl restart haproxy
     systemctl enable --now cron
     systemctl enable --now haproxy
     systemctl enable --now netfilter-persistent
-    systemctl enable --now squid
     systemctl enable --now ws-epro
-    systemctl enable --now client
     systemctl enable --now fail2ban
 history -c
 echo "unset HISTFILE" >> /etc/profile
