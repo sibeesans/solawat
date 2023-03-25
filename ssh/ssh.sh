@@ -304,7 +304,6 @@ systemctl restart haproxy
     systemctl daemon-reload
     systemctl start netfilter-persistent
     systemctl enable --now nginx
-    systemctl enable --now chronyd
     systemctl enable --now xray
     systemctl enable --now rc-local
     systemctl enable --now dropbear
