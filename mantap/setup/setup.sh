@@ -121,7 +121,7 @@ echo -e "             ${green}Telegram t.me/tau_samawa "
 echo -e "             WhatsApp wa.me/6282339191527"
 echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
-rm -f premi.sh
+rm -f setup.sh
 exit 0
 fi
 clear
