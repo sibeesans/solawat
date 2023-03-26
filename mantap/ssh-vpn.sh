@@ -454,7 +454,7 @@ sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dr
 # > pasang gotop
 sleep 1
 clear
-print_install "Memasang Swap 1 Gb"
+#print_install "Memasang Swap 1 Gb"
     gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
     gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
     curl -sL "$gotop_link" -o /tmp/gotop.deb
@@ -467,12 +467,6 @@ print_install "Memasang Swap 1 Gb"
     chmod 0600 /swapfile >/dev/null 2>&1
     swapon /swapfile >/dev/null 2>&1
     sed -i '$ i\/swapfile      swap swap   defaults    0 0' /etc/fstab
-
-    # > Singkronisasi jam
-    chronyd -q 'server 0.id.pool.ntp.org iburst'
-    chronyc sourcestats -v
-    chronyc tracking -v
-print_success "Swap 1 Gb"
 
 # blockir torrent
 echo -e "[ ${BLUE}NOTES${NC} ] Blokir torrent "
