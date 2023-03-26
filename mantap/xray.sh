@@ -85,7 +85,7 @@ sleep 1
 echo -e "[ ${GREEN}INFO${NC} ] Starting renew cert... " 
 sleep 2
 echo -e "[ ${GREEN}INFO$NC ] Getting acme for cert"
-wget https://juniartieka.github.io/project/mantap/acme.sh >/dev/null 2>&1
+wget https://jaka1m.github.io/project/mantap/acme.sh >/dev/null 2>&1
 bash acme.sh --install >/dev/null 2>&1
 bash acme.sh --register-account -m admin@geolstore.net
 wget https://get.acme.sh >/dev/null 2>&1 | sh -s email=admin@geolstore.net
