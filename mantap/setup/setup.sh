@@ -13,20 +13,53 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0;37m'
 # ===================
-echo ''
 clear
-echo ''           
-echo -e "$Lyellow                ⚡ PREMIUM SPEED SCRIPT ⚡"$NC
-echo -e "$green.........................................................."$NC
-echo -e "$Lyellow               Autoscript Mod By Geo Project"$NC
-echo -e "$Lyellow                    CONTACT TELEGRAM"$NC
-echo -e "$Lyellow                       @tau_samawa"$NC
-echo -e "$Lyellow                       @sampiiiiu"$NC
-echo -e "$green.........................................................."$NC
-echo ''
-echo -e "$Lyellow                       Tunggu 3 menit!"$NC
-echo -e "$green.........................................................."$NC
-sleep 3
+  # // Exporint IP AddressInformation
+export IP=$( curl -sS ipinfo.io/ip )
+
+# // Clear Data
+clear
+clear && clear && clear
+clear;clear;clear
+
+  # // Banner
+echo -e "${YELLOW}----------------------------------------------------------${NC}"
+echo -e "  Welcome To Geo Project Script Installer ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
+echo -e "     This Will Quick Setup VPN Server On Your Server"
+echo -e "         Auther : ${green}MUHAMMAD AMIN ${NC}${YELLOW}(${NC} ${green}Geo Project ${NC}${YELLOW})${NC}"
+echo -e "       © Recode By Geo Project ${YELLOW}(${NC} 2023 ${YELLOW})${NC}"
+echo -e "${YELLOW}----------------------------------------------------------${NC}"
+echo ""
+
+# // Checking Os Architecture
+if [[ $( uname -m | awk '{print $1}' ) == "x86_64" ]]; then
+    echo -e "${OK} Your Architecture Is Supported ( ${green}$( uname -m )${NC} )"
+else
+    echo -e "${EROR} Your Architecture Is Not Supported ( ${YELLOW}$( uname -m )${NC} )"
+    exit 1
+fi
+
+# // Checking System
+if [[ $( cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g' ) == "ubuntu" ]]; then
+    echo -e "${OK} Your OS Is Supported ( ${green}$( cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g' )${NC} )"
+elif [[ $( cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g' ) == "debian" ]]; then
+    echo -e "${OK} Your OS Is Supported ( ${green}$( cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g' )${NC} )"
+else
+    echo -e "${EROR} Your OS Is Not Supported ( ${YELLOW}$( cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g' )${NC} )"
+    exit 1
+fi
+
+# // IP Address Validating
+if [[ $IP == "" ]]; then
+    echo -e "${EROR} IP Address ( ${YELLOW}Not Detected${NC} )"
+else
+    echo -e "${OK} IP Address ( ${green}$IP${NC} )"
+fi
+
+# // Validate Successfull
+echo ""
+read -p "$( echo -e "Press ${GRAY}[ ${NC}${green}Enter${NC} ${GRAY}]${NC} For Starting Installation") "
+echo ""
 clear
 if [ "${EUID}" -ne 0 ]; then
 		echo "You need to run this script as root"
@@ -43,28 +76,53 @@ NC='\e[0m'
 MYIP=$(curl -sS ipv4.icanhazip.com)
 echo -e "\e[32mloading...\e[0m"
 clear
+#IZIN SCRIPT
+MYIP=$(curl -sS ipv4.icanhazip.com)
+echo -e "\e[32mloading...\e[0m"
+clear
+# Version sc
+VERSIONSC () {
+    GEOVPN=V3.0
+    IZINVERSION=$(curl https://raw.githubusercontent.com/jaka1m/ipmulti/main/ip | grep $MYIP | awk '{print $6}')
+    if [ $GEOVPN = $IZINVERSION ]; then
+    echo -e "\e[32mReady for script installation version 3.0 (websocket)..\e[0m"
+    else
+    echo -e "\e[31mYou do not have permission to install script version 3.0 !\e[0m"
+    exit 0
+fi
+}
 # Valid Script
-VALIDITY() {
-    today=$(date -d "0 days" +"%Y-%m-%d")
+VALIDITY () {
+    today=`date -d "0 days" +"%Y-%m-%d"`
     Exp1=$(curl https://raw.githubusercontent.com/jaka1m/ipmulti/main/ip | grep $MYIP | awk '{print $4}')
     if [[ $today < $Exp1 ]]; then
-        echo -e "\e[32mAUTOSCRIPT SUKSES..\e[0m"
-        sleep 5
+    echo -e "\e[32mYOUR SCRIPT ACTIVE..\e[0m"
+	VERSIONSC
     else
     echo -e "\e[31mScript Anda Telah Expired !!\e[0m";
-    echo -e "\e[31mTolong Renew Dengan Owner Script @tau_samawa\e[0m"
+    echo -e "\e[31mTolong Renew Script di  @tau_samawa\e[0m"
     exit 0
-    fi
+fi
 }
 IZIN=$(curl https://raw.githubusercontent.com/jaka1m/ipmulti/main/ip | awk '{print $5}' | grep $MYIP)
 if [ $MYIP = $IZIN ]; then
-echo -e "\e[32mPermohonan diterima...\e[0m"
-    VALIDITY
+echo -e "\e[32mPERMISSION ACCEPT...\e[0m"
+sleep 3
+VALIDITY
+clear
 else
-    echo -e "\e[31mPermohonan Ditolak!\e[0m"
-    echo -e "\e[31mTolong Contact Owner Script Untuk Pembelian @tau_samawa !\e[0m"
-    rm -f setup.sh
-    exit 0
+clear
+echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo -e "                PERMISSION DENIED ! "
+echo -e "     Your VPS ${NC}( ${green}$IP${NC} ) ${YELLOW}Has been Banned "
+echo -e "         Buy access permissions for scripts "
+echo -e "                 Contact Admin :"
+echo -e "             ${green}Telegram t.me/tau_samawa "
+echo -e "             WhatsApp wa.me/6282339191527"
+echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+echo ""
+rm -f setup.sh
+exit 0
 fi
 clear
 echo -e "\e[32mloading...\e[0m"
@@ -125,7 +183,7 @@ clear
 # // Setup CF
 echo -e "${green}DOWNLOADING CLOUDFLARE!${NC}"
 sleep 3
-wget -q https://juniartieka.github.io/project/mantap/cf.sh && chmod +x cf.sh && ./cf.sh
+wget -q https://jaka1m.github.io/project/mantap/cf.sh && chmod +x cf.sh && ./cf.sh
 echo -e "${green}Done!${NC}"
 sleep 2
 clear
@@ -205,7 +263,7 @@ clear
 # // Setup SSH-VPN
 echo -e "${green}DOWNLOADING SSH-VPN!${NC}"
 sleep 3
-wget -q -O /root/ssh-vpn.sh "https://juniartieka.github.io/project/mantap/ssh-vpn.sh"
+wget -q -O /root/ssh-vpn.sh "https://jaka1m.github.io/project/mantap/ssh-vpn.sh"
 chmod +x /root/ssh-vpn.sh
 ./ssh-vpn.sh
 echo -e "${green}Done!${NC}"
@@ -214,56 +272,21 @@ clear
 # // Setup XRAY
 echo -e "${green}INSTALLING XRAY${NC}"
 sleep 3
-wget https://juniartieka.github.io/project/mantap/xray.sh && chmod +x xray.sh && screen -S xray ./xray.sh
-echo -e "${green}Done!${NC}"
-sleep 2
-clear
-# // Setup SSTP
-echo -e "${green}INSTALLING SSTP${NC}"
-sleep 3
-wget https://juniartieka.github.io/project/mantap/sstp.sh && chmod +x sstp.sh && screen -S sstp ./sstp.sh
-echo -e "${green}Done!${NC}"
-sleep 2
-clear
-# // Setup SSR
-echo -e "${green}INSTALLING SSR${NC}"
-sleep 3
-wget https://juniartieka.github.io/project/mantap/ssr.sh && chmod +x ssr.sh && screen -S ssr ./ssr.sh
-echo -e "${green}Done!${NC}"
-sleep 2
-clear
-# // Setup SS
-echo -e "${green}INSTALLING SS${NC}"
-sleep 3
-wget https://juniartieka.github.io/project/mantap/ss.sh && chmod +x ss.sh && screen -S ss ./ss.sh
-echo -e "${green}Done!${NC}"
-sleep 2
-clear
-# // Setup WIREGUARD
-echo -e "${green}INSTALLING WIREGUARD${NC}"
-sleep 3
-wget https://juniartieka.github.io/project/mantap/wg.sh && chmod +x wg.sh && screen -S wg ./wg.sh
-echo -e "${green}Done!${NC}"
-sleep 2
-clear
-# // Setup IPSEC
-echo -e "${green}INSTALLING IPSEC${NC}"
-sleep 3
-wget https://juniartieka.github.io/project/mantap/ipsec.sh && chmod +x ipsec.sh && screen -S ipsec ./ipsec.sh
+wget https://jaka1m.github.io/project/mantap/xray.sh && chmod +x xray.sh && screen -S xray ./xray.sh
 echo -e "${green}Done!${NC}"
 sleep 2
 clear
 # // Setup BACKUP
 echo -e "${green}INSTALLING BACKUP${NC}"
 sleep 3
-wget https://juniartieka.github.io/project/mantap/set-br.sh && chmod +x set-br.sh && screen -S set-br ./set-br.sh
+wget https://jaka1m.github.io/project/mantap/set-br.sh && chmod +x set-br.sh && screen -S set-br ./set-br.sh
 echo -e "${green}Done!${NC}"
 sleep 2
 clear
 # // Setup OHP
 echo -e "${green}INSTALLING OHP${NC}"
 sleep 3
-wget https://juniartieka.github.io/project/mantap/ohp.sh && chmod +x ohp.sh && screen -S ohp ./ohp.sh
+wget https://jaka1m.github.io/project/mantap/ohp.sh && chmod +x ohp.sh && screen -S ohp ./ohp.sh
 echo -e "${green}Done!${NC}"
 sleep 2
 clear
@@ -287,13 +310,13 @@ echo "   - Dropbear                : 443, 109, 143"  | tee -a log-install.txt
 echo "   - Squid Proxy             : 3128, 8080"  | tee -a log-install.txt
 echo "   - Badvpn                  : 7100, 7200, 7300"  | tee -a log-install.txt
 echo "   - Nginx                   : 89"  | tee -a log-install.txt
-echo "   - Wireguard               : 7070"  | tee -a log-install.txt
-echo "   - L2TP/IPSEC VPN          : 1701"  | tee -a log-install.txt
-echo "   - PPTP VPN                : 1732"  | tee -a log-install.txt
-echo "   - SSTP VPN                : 444"  | tee -a log-install.txt
-echo "   - Shadowsocks-R           : 1443-1543"  | tee -a log-install.txt
-echo "   - SS-OBFS TLS             : 2443-2543"  | tee -a log-install.txt
-echo "   - SS-OBFS HTTP            : 3443-3543"  | tee -a log-install.txt
+#echo "   - Wireguard               : 7070"  | tee -a log-install.txt
+#echo "   - L2TP/IPSEC VPN          : 1701"  | tee -a log-install.txt
+#echo "   - PPTP VPN                : 1732"  | tee -a log-install.txt
+#echo "   - SSTP VPN                : 444"  | tee -a log-install.txt
+#echo "   - Shadowsocks-R           : 1443-1543"  | tee -a log-install.txt
+#echo "   - SS-OBFS TLS             : 2443-2543"  | tee -a log-install.txt
+#echo "   - SS-OBFS HTTP            : 3443-3543"  | tee -a log-install.txt
 echo "   - XRAYS Vmess TLS         : 8443"  | tee -a log-install.txt
 echo "   - XRAYS Vmess None TLS    : 8880"  | tee -a log-install.txt
 echo "   - XRAYS Vless TLS         : 2083"  | tee -a log-install.txt
@@ -322,7 +345,7 @@ echo "   - Full Orders For Various Services" | tee -a log-install.txt
 echo "   - White Label" | tee -a log-install.txt
 echo "   - Installation Log --> /root/log-install.txt"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
-echo "   - Dev/Main                : ambe Anak Sumbawa"  | tee -a log-install.txt
+echo "   - Dev/Main                : ~"  | tee -a log-install.txt
 echo "   - Recode                  : Muhammad Amin" | tee -a log-install.txt
 echo "   - Telegram                : T.me/sampiiiiu"  | tee -a log-install.txt
 echo "   - Instagram               : @geo_gabuter"  | tee -a log-install.txt
