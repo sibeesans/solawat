@@ -25,7 +25,7 @@ clear;clear;clear
 
   # // Banner
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
-echo -e "  Welcome To Geo Project Script Installer ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
+echo -e "  SELAMAT DATANG NGENTOT ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
 echo -e "     This Will Quick Setup VPN Server On Your Server"
 echo -e "         Auther : ${green}MUHAMMAD AMIN ${NC}${YELLOW}(${NC} ${green}Geo Project ${NC}${YELLOW})${NC}"
 echo -e "       © Recode By Geo Project ${YELLOW}(${NC} 2023 ${YELLOW})${NC}"
@@ -58,76 +58,32 @@ else
 fi
 
 # // Validate Successfull
-echo ""
-read -p "$( echo -e "Press ${GRAY}[ ${NC}${green}Enter${NC} ${GRAY}]${NC} For Starting Installation") "
-echo ""
-clear
-if [ "${EUID}" -ne 0 ]; then
-		echo "You need to run this script as root"
-		exit 1
-fi
-if [ "$(systemd-detect-virt)" == "openvz" ]; then
-		echo "OpenVZ is not supported"
-		exit 1
-fi
-red='\e[1;31m'
-green='\e[0;32m'
-NC='\e[0m'
-#IZIN SCRIPT
-MYIP=$(curl -sS ipv4.icanhazip.com)
-echo -e "\e[32mloading...\e[0m"
-clear
-#IZIN SCRIPT
-MYIP=$(curl -sS ipv4.icanhazip.com)
-echo -e "\e[32mloading...\e[0m"
-clear
-# Version sc
-VERSIONSC () {
-    GEOVPN=V3.0
-    IZINVERSION=$(curl https://raw.githubusercontent.com/sibeesans/jensek/main/ip | grep $MYIP | awk '{print $6}')
-    if [ $GEOVPN = $IZINVERSION ]; then
-    echo -e "\e[32mReady for script installation version 3.0 (websocket)..\e[0m"
-    else
-    echo -e "\e[31mYou do not have permission to install script version 3.0 !\e[0m"
-    exit 0
-fi
-}
-# Valid Script
-VALIDITY () {
-    today=`date -d "0 days" +"%Y-%m-%d"`
-    Exp1=$(curl https://raw.githubusercontent.com/sibeesans/jensek/main/ip | grep $MYIP | awk '{print $4}')
-    if [[ $today < $Exp1 ]]; then
-    echo -e "\e[32mYOUR SCRIPT ACTIVE..\e[0m"
-	VERSIONSC
-    else
-    echo -e "\e[31mScript Anda Telah Expired !!\e[0m";
-    echo -e "\e[31mTolong Renew Script di  @tau_samawa\e[0m"
-    exit 0
-fi
-}
-IZIN=$(curl https://raw.githubusercontent.com/sibeesans/jensek/main/ip | awk '{print $5}' | grep $MYIP)
-if [ $MYIP = $IZIN ]; then
-echo -e "\e[32mPERMISSION ACCEPT...\e[0m"
-sleep 3
-VALIDITY
+echo -e ""
+echo -e "\033[0;37m ↝ Selamat Datang Kontol1922 "
+echo -e " ↝ Masukkan Kode Untuk Lanjut "
+echo -e " ↝ Kode Tidak Terlihat Saat Di Ketik "
+echo -e "\033[0;32m"
+kunci="y";
+read -s -p "Password 👉 " pass
+if [ $pass == $kunci ]
+then
 clear
 else
 clear
-echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo -e "                PERMISSION DENIED ! "
-echo -e "     Your VPS ${NC}( ${green}$IP${NC} ) ${YELLOW}Has been Banned "
-echo -e "         Buy access permissions for scripts "
-echo -e "                 Contact Admin :"
-echo -e "             ${green}Telegram t.me/tau_samawa "
-echo -e "             WhatsApp wa.me/6282339191527"
-echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo ""
-rm -f premi.sh
-exit 0
+echo -e ""
+echo -e "${RED}Password Salah...!!${NC}"
+echo -e ""
+sleep 2
+rm -rf new.sh
+rm -fr new.sh
+sleep 2
+exit
 fi
+echo -e "\033[0;32m SELAMAT ANDA BERHASIL MASUK & INSTALL"
+sleep 3
 clear
 echo -e "\e[32mloading...\e[0m"
-clear
+sleep 2
 ####
 start=$(date +%s)
 secs_to_human() {
