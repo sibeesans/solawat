@@ -51,13 +51,6 @@ else
 fi
 
 # // IP Address Validating
-if [[ $IP == "" ]]; then
-    echo -e "${EROR} IP Address ( ${YELLOW}Not Detected${NC} )"
-else
-    echo -e "${OK} IP Address ( ${green}$IP${NC} )"
-fi
-
-# // Validate Successfull
 echo -e ""
 echo -e "\033[0;37m ↝ Selamat Datang Kontol1922 "
 echo -e " ↝ Masukkan Kode Untuk Lanjut "
