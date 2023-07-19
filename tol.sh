@@ -25,7 +25,7 @@ clear;clear;clear
 
   # // Banner
 echo -e "${YELLOW}----------------------------------------------------------${NC}"
-echo -e "  SELAMAT DATANG NGENTOT ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
+echo -e "  SELAMAT DATANG ASU ${YELLOW}(${NC}${green} Stable Edition ${NC}${YELLOW})${NC}"
 echo -e "     This Will Quick Setup VPN Server On Your Server"
 echo -e "         Auther : ${green}MUHAMMAD AMIN ${NC}${YELLOW}(${NC} ${green}Geo Project ${NC}${YELLOW})${NC}"
 echo -e "       © Recode By Geo Project ${YELLOW}(${NC} 2023 ${YELLOW})${NC}"
@@ -198,12 +198,12 @@ echo $host1 > /root/domain
 echo ""
 elif [[ $host == "2" ]]; then
 #install cf
-wget https://raw.githubusercontent.com/jaka1m/project/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
+wget https://raw.githubusercontent.com/sibeesans/solawat/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
 rm -f /root/cf.sh
 clear
 else
 print_install "Random Subdomain/Domain is used"
-wget https://raw.githubusercontent.com/jaka1m/project/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
+wget https://raw.githubusercontent.com/sibeesans/solawat/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
 rm -f /root/cf.sh
 clear
     fi
@@ -296,7 +296,7 @@ clear
     # // Ambil Config Server
     wget -O /etc/xray/config.json "https://raw.githubusercontent.com/jaka1m/project/main/xray/config.json" >/dev/null 2>&1
     #wget -O /usr/local/bin/xray "https://raw.githubusercontent.com/jaka1m/project/main/xray/xray.linux.64bit" >/dev/null 2>&1
-    wget -O /etc/systemd/system/runn.service "https://raw.githubusercontent.com/jaka1m/project/main/xray/runn.service" >/dev/null 2>&1
+    wget -O /etc/systemd/system/runn.service "https://raw.githubusercontent.com/sibeesans/solawat/main/xray/runn.service" >/dev/null 2>&1
     #chmod +x /usr/local/bin/xray
     domain=$(cat /etc/xray/domain)
     IPVS=$(cat /etc/xray/ipvps)
@@ -305,10 +305,10 @@ clear
     # Settings UP Nginix Server
     clear
     print_install "Memasang konfigurasi Packet"
-    wget -O /etc/haproxy/haproxy.cfg "https://raw.githubusercontent.com/jaka1m/project/main/xray/haproxy.cfg" >/dev/null 2>&1
-    wget -O /etc/nginx/conf.d/xray.conf "https://raw.githubusercontent.com/jaka1m/project/main/xray/xray.conf" >/dev/null 2>&1
+    wget -O /etc/haproxy/haproxy.cfg "https://raw.githubusercontent.com/sibeesans/solawat/main/xray/haproxy.cfg" >/dev/null 2>&1
+    wget -O /etc/nginx/conf.d/xray.conf "https://raw.githubusercontent.com/sibeesans/solawat/main/xray/xray.conf" >/dev/null 2>&1
     sed -i "s/xxx/${domain}/g" /etc/nginx/conf.d/xray.conf
-    curl https://raw.githubusercontent.com/jaka1m/project/main/ssh/nginx.conf > /etc/nginx/nginx.conf
+    curl https://raw.githubusercontent.com/sibeesans/solawat/main/ssh/nginx.conf > /etc/nginx/nginx.conf
     
 cat /etc/xray/xray.crt /etc/xray/xray.key | tee /etc/haproxy/hap.pem
 
@@ -344,7 +344,7 @@ function ssh(){
     # Install ssh
     clear
     print_install "Memasang Setup Ssh-Vpn"
-    wget https://raw.githubusercontent.com/jaka1m/project/main/ssh/ssh.sh && chmod +x ssh.sh && screen -S ssh ./ssh.sh
+    wget https://raw.githubusercontent.com/sibeesans/solawat/main/ssh/ssh.sh && chmod +x ssh.sh && screen -S ssh ./ssh.sh
  
 }
 
@@ -352,7 +352,7 @@ function ssh(){
 function menu(){
     clear
     print_install "Memasang Menu Packet"
-    wget -O ~/menu.zip "https://raw.githubusercontent.com/jaka1m/project/main/menu/menu.zip" >/dev/null 2>&1
+    wget -O ~/menu.zip "https://raw.githubusercontent.com/sibeesans/solawat/main/menu/menu.zip" >/dev/null 2>&1
     mkdir /root/menu
     7z e  ~/menu.zip -o/root/menu/ >/dev/null 2>&1
     chmod +x /root/menu/*
