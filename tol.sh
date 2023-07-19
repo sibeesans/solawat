@@ -294,7 +294,7 @@ clear
     bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install -u www-data --version 1.5.6
  
     # // Ambil Config Server
-    wget -O /etc/xray/config.json "https://raw.githubusercontent.com/jaka1m/project/main/xray/config.json" >/dev/null 2>&1
+    wget -O /etc/xray/config.json "https://raw.githubusercontent.com/sibeesans/solawat/main/xray/config.json" >/dev/null 2>&1
     #wget -O /usr/local/bin/xray "https://raw.githubusercontent.com/jaka1m/project/main/xray/xray.linux.64bit" >/dev/null 2>&1
     wget -O /etc/systemd/system/runn.service "https://raw.githubusercontent.com/sibeesans/solawat/main/xray/runn.service" >/dev/null 2>&1
     #chmod +x /usr/local/bin/xray
